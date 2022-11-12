@@ -1,17 +1,9 @@
 import type { ReactNode } from 'react';
-
-export interface SectionBox {
-  icon?: string;
-  title: string;
-  content: ReactNode;
-}
+import type { Icon } from '@typings';
 
 export interface SectionProps {
-  heading: string;
-  alternate?: boolean;
-  children: SectionBox[];
-}
-
-export interface StyledSectionProps {
-  alternate?: boolean;
+  title: string;
+  icon?: Icon;
+  description?: ReactNode;
+  children?: ReactNode;
 }

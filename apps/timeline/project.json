@@ -17,10 +17,7 @@
         "polyfills": "apps/timeline/src/polyfills.ts",
         "tsConfig": "apps/timeline/tsconfig.app.json",
         "assets": ["apps/timeline/src/favicon.ico", "apps/timeline/src/assets"],
-        "styles": [
-          "apps/timeline/src/font-awesome/styles.css",
-          "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-        ],
+        "styles": ["apps/timeline/src/font-awesome/styles.css"],
         "scripts": [],
         "webpackConfig": "@nrwl/react/plugins/webpack"
       },

@@ -16,8 +16,8 @@ export const Timer = ({ date, duration }: TimerProps) => {
     <StyledTimerList>
       {timerKeys.map((key) => (
         <StyledTimerListItem key={`${key}-${date.toString()}`}>
+          <StyledTimerValue>{String(diff[key]).padStart(2, '0')}</StyledTimerValue>
           <StyledTimerType>{titlecase(key)}</StyledTimerType>
-          <StyledTimerValue>{diff[key]}</StyledTimerValue>
         </StyledTimerListItem>
       ))}
     </StyledTimerList>

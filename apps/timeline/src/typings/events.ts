@@ -1,8 +1,9 @@
 import type { Duration } from 'date-fns';
+import type { Icon } from './icon';
 
 export interface ITransitionEvent {
   name: string;
-  icon: string;
+  icon: Icon;
   description?: string;
   date: Date;
   duration?: Duration;
