@@ -1,4 +1,5 @@
 import { AppBar, Toolbar, Typography } from '@mui/material';
+import { config } from '@config';
 import { Container } from '../container';
 import type { ShellProps } from './shell.types';
 
@@ -12,7 +13,7 @@ export const Shell = ({ children }: ShellProps) => (
     >
       <Toolbar sx={{ flexWrap: 'wrap' }}>
         <Typography variant="h4" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-          Ally's Transition Timeline
+          {config.name}'s Transition Timeline
         </Typography>
       </Toolbar>
     </AppBar>

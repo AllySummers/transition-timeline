@@ -1,32 +1,25 @@
 {
-  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react",
     "allowJs": true,
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "jsxImportSource": "@emotion/react",
+    "noEmit": true,
     "paths": {
-      "@utils": ["apps/timeline/src/utils"],
-      "@config": ["apps/timeline/src/config"],
-      "@components": ["apps/timeline/src/components"],
-      "@hooks": ["apps/timeline/src/hooks"],
-      "@typings": ["apps/timeline/src/typings"]
-    }
-  },
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
+      "@components": ["apps/timeline/components"],
+      "@config": ["apps/timeline/config"],
+      "@hooks": ["apps/timeline/hooks"],
+      "@typings": ["apps/timeline/typings"],
+      "@utils": ["apps/timeline/utils"]
     },
-    {
-      "path": "./tsconfig.spec.json"
-    }
-  ]
+    "resolveJsonModule": true,
+    "types": ["jest", "node"]
+  },
+  "exclude": ["node_modules", "jest.config.ts"],
+  "extends": "../../tsconfig.base.json",
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"]
 }

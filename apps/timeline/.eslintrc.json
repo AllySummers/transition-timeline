@@ -1,17 +1,23 @@
 {
-  "extends": ["plugin:@nrwl/nx/react", "../../.eslintrc.json"],
-  "ignorePatterns": ["!**/*", "jest.config.js"],
+  "extends": ["plugin:@nrwl/nx/react-typescript", "next", "next/core-web-vitals", "../../.eslintrc.json"],
+  "ignorePatterns": ["!**/*", ".next/**/*"],
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx"],
-      "plugins": ["react"],
-      "extends": ["plugin:react/recommended", "plugin:react-hooks/recommended"],
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "parserOptions": {
-        "project": ["apps/timeline/tsconfig.*?.json"],
+        "project": ["apps/timeline/tsconfig(.*)?.json"],
         "ecmaFeatures": {
           "jsx": true
         }
       },
+      "rules": {
+        "@next/next/no-html-link-for-pages": ["error", "apps/timeline/pages"],
+        "import/no-default-export": "off",
+        "import/no-anonymous-default-export": "error"
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
       "rules": {
         "@typescript-eslint/ban-types": [
           "error",
@@ -61,46 +67,17 @@
         "react/no-arrow-function-lifecycle": "error",
         "react/no-danger": "error",
         "react/no-did-mount-set-state": "error",
-        "react/no-did-update-set-state": "error",
-        "react/forbid-dom-props": [
-          "error",
-          {
-            "forbid": [
-              {
-                "propName": "data-testId",
-                "message": "Did you mean to use `data-testid`? This will cause a React error: https://reactjs.org/warnings/unknown-prop.html"
-              }
-            ]
-          }
-        ],
-        "react/forbid-component-props": [
-          "error",
-          {
-            "forbid": [
-              {
-                "propName": "data-testId",
-                "message": "Did you mean to use `data-testid`? This will cause a React error: https://reactjs.org/warnings/unknown-prop.html"
-              }
-            ]
-          }
-        ]
+        "react/no-did-update-set-state": "error"
       }
     },
     {
-      "files": ["examples.ts", "examples.tsx"],
-      "rules": {
-        "import/no-default-export": "off",
-        "tangerine/import/no-default-export": "off",
-        "import/no-anonymous-default-export": "error"
-      }
+      "files": ["*.js", "*.jsx"],
+      "rules": {}
     },
     {
-      "files": ["test.ts", "test.tsx"],
+      "files": ["*test.ts", "*test.tsx", "*spec.ts", "*spec.tsx"],
       "plugins": ["testing-library"],
-      "extends": [
-        "plugin:testing-library/react",
-        "plugin:jest-dom/recommended"
-      ],
+      "extends": ["plugin:testing-library/react", "plugin:jest-dom/recommended"],
       "rules": {
         "react/jsx-key": "off",
         // Waiting for this issue to be solved before removing the `prefer-presence-queries`: https://github.com/testing-library/eslint-plugin-testing-library/issues/518
@@ -123,5 +100,11 @@
         "testing-library/prefer-wait-for": "warn"
       }
     }
-  ]
+  ],
+  "rules": {
+    "@next/next/no-html-link-for-pages": "off"
+  },
+  "env": {
+    "jest": true
+  }
 }

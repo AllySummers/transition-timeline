@@ -1,75 +1,71 @@
 {
-  "name": "timeline",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/timeline/src",
+  "name": "timeline",
   "projectType": "application",
+  "sourceRoot": "apps/timeline",
+  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nrwl/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
+      "configurations": {
+        "development": {
+          "outputPath": "apps/timeline"
+        },
+        "production": {}
+      },
       "defaultConfiguration": "production",
+      "executor": "@nrwl/next:build",
       "options": {
-        "compiler": "babel",
         "outputPath": "dist/apps/timeline",
-        "index": "apps/timeline/src/index.html",
-        "baseHref": "/",
-        "main": "apps/timeline/src/main.tsx",
-        "polyfills": "apps/timeline/src/polyfills.ts",
-        "tsConfig": "apps/timeline/tsconfig.app.json",
-        "assets": ["apps/timeline/src/favicon.ico", "apps/timeline/src/assets"],
-        "styles": ["apps/timeline/src/font-awesome/styles.css"],
-        "scripts": [],
-        "webpackConfig": "@nrwl/react/plugins/webpack"
+        "root": "apps/timeline"
       },
-      "configurations": {
-        "development": {
-          "extractLicenses": false,
-          "optimization": false,
-          "sourceMap": true,
-          "vendorChunk": true
-        },
-        "production": {
-          "optimization": true,
-          "outputHashing": "all",
-          "sourceMap": false,
-          "namedChunks": false,
-          "extractLicenses": true,
-          "vendorChunk": false
-        }
-      }
+      "outputs": ["{options.outputPath}"]
     },
-    "serve": {
-      "executor": "@nrwl/webpack:dev-server",
-      "defaultConfiguration": "development",
+    "export": {
+      "executor": "@nrwl/next:export",
       "options": {
-        "buildTarget": "timeline:build",
-        "hmr": true
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "timeline:build:development"
-        },
-        "production": {
-          "buildTarget": "timeline:build:production",
-          "hmr": false
-        }
+        "buildTarget": "timeline:build:production"
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/timeline/**/*.{ts,tsx,js,jsx}"]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "serve": {
+      "configurations": {
+        "development": {
+          "buildTarget": "timeline:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "timeline:build:production",
+          "dev": false
+        }
+      },
+      "defaultConfiguration": "development",
+      "executor": "@nrwl/next:server",
+      "options": {
+        "buildTarget": "timeline:build",
+        "dev": true
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/timeline"],
       "options": {
         "jestConfig": "apps/timeline/jest.config.ts",
         "passWithNoTests": true
+      },
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"]
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "color": true,
+        "commands": ["tsc -p apps/timeline/tsconfig.json --pretty", "tsc -p apps/timeline/tsconfig.spec.json --pretty"],
+        "parallel": false
       }
     }
-  },
-  "tags": []
+  }
 }
