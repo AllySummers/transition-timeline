@@ -1,13 +1,15 @@
 {
-  "trailingComma": "none",
-  "tabWidth": 2,
-  "semi": true,
-  "singleQuote": true,
-  "bracketSpacing": true,
   "arrowParens": "always",
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "editorconfig": true,
+  "endOfLine": "lf",
+  "jsonRecursiveSort": true,
+  "plugins": ["prettier-plugin-package-perfection", "prettier-plugin-sort-json"],
   "printWidth": 120,
   "quoteProps": "as-needed",
-  "bracketSameLine": false,
-  "editorconfig": true,
-  "endOfLine": "lf"
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "none"
 }

@@ -1,12 +1,14 @@
 {
+  "plugins": [["@emotion", { "pure": true, "ssr": true }]],
   "presets": [
     [
-      "@nrwl/react/babel",
+      "next/babel",
       {
-        "runtime": "automatic",
-        "importSource": "@emotion/react"
+        "preset-react": {
+          "importSource": "@emotion/react",
+          "runtime": "automatic"
+        }
       }
     ]
-  ],
-  "plugins": [["@emotion", { "pure": true, "ssr": true }]]
+  ]
 }
