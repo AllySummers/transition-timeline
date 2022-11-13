@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
-import type { Theme } from '@mui/material';
-import { useTheme } from '@mui/styles';
+import { useTheme } from '@mui/material';
 import type { DetailedHTMLProps, LiHTMLAttributes } from 'react';
 import { useAlternate } from '@hooks';
 import type { StyledListItemProps } from './timer.types';
@@ -57,7 +56,7 @@ export const StyledTimerListItem = ({
   children,
   ...props
 }: DetailedHTMLProps<LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>) => {
-  const theme = useTheme<Theme>();
+  const theme = useTheme();
   const alternate = useAlternate();
 
   return (
