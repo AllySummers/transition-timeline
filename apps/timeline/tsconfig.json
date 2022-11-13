@@ -7,7 +7,6 @@
     "incremental": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "jsxImportSource": "@emotion/react",
     "noEmit": true,
     "paths": {
       "@components": ["apps/timeline/components"],
@@ -17,7 +16,7 @@
       "@utils": ["apps/timeline/utils"]
     },
     "resolveJsonModule": true,
-    "types": ["jest", "node"]
+    "types": ["jest", "node", "react"]
   },
   "exclude": ["node_modules", "jest.config.ts"],
   "extends": "../../tsconfig.base.json",

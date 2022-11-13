@@ -1,11 +1,12 @@
 {
-  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
+    "jsx": "preserve",
     "module": "commonjs",
-    "types": ["jest", "node"],
-    "jsx": "react"
+    "outDir": "../../dist/out-tsc",
+    "types": ["jest", "node"]
   },
+  "exclude": ["node_modules"],
+  "extends": "./tsconfig.json",
   "include": [
     "jest.config.ts",
     "**/*.test.ts",
@@ -17,6 +18,5 @@
     "**/*.test.jsx",
     "**/*.spec.jsx",
     "**/*.d.ts"
-  ],
-  "exclude": ["node_modules"]
+  ]
 }
