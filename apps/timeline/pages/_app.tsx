@@ -8,7 +8,7 @@ import '../font-awesome/styles.css';
 const App = ({ Component, pageProps }: AppProps) => (
   <>
     <Head>
-      <title>{config.name}'s Transition Timeline</title>
+      <title>{`${config.name}'s Transition Timeline`}</title>
     </Head>
     <ThemeProvider theme={theme}>
       <CssBaseline />

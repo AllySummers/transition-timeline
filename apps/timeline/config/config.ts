@@ -9,8 +9,13 @@ export const config: IConfig = {
     },
     {
       name: 'Estrogen',
-      icon: 'fa-solid fa-capsules',
+      icon: 'fa-solid fa-tablets',
       date: new Date('September 3, 2018 16:30:00')
+    },
+    {
+      name: 'Progesterone',
+      icon: 'fa-solid fa-capsules',
+      date: new Date('October 7, 2022 10:30:00')
     },
     {
       name: 'Legal Name/Gender Change',
@@ -18,7 +23,7 @@ export const config: IConfig = {
       date: new Date('October 12, 2018 10:47:00')
     },
     {
-      name: 'Sexual Reassignment Surgery',
+      name: 'Sex Reassignment Surgery',
       icon: 'fa-solid fa-scalpel',
       date: new Date('August 11, 2023 09:00:00'),
       duration: {

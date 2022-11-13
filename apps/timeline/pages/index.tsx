@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useEffectOnce, useInterval } from 'usehooks-ts';
+import { useInterval } from 'usehooks-ts';
 import { Group, Section, type SectionProps, Timer } from '@components';
 import { config } from '@config';
 import type { ISortedEvents, ITransitionEvent } from '@typings';
-import { sortEvents, titlecase } from '@utils';
+import { categoriseEvents, sortCategorisedDates, titlecase } from '@utils';
 
 const mapEvents = ({ icon, date, description, duration, name }: ITransitionEvent): SectionProps => ({
   title: name,
@@ -20,12 +20,8 @@ const Index = () => {
   });
 
   useInterval(() => {
-    setSortedEvents(sortEvents(config.events));
+    setSortedEvents(sortCategorisedDates(categoriseEvents(config.events)));
   }, 1000);
-
-  useEffectOnce(() => {
-    document.title = `${config.name}'s Transition Timeline`;
-  });
 
   const filteredEvents = (['past', 'current', 'future'] as const).filter((event) => sortedEvents[event].length);
 

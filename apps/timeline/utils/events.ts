@@ -1,8 +1,8 @@
 import { add, isFuture, isPast } from 'date-fns';
-import type { ITransitionEvent } from '@typings';
+import type { ISortedEvents, ITransitionEvent } from '@typings';
 
-export const sortEvents = (events: ITransitionEvent[]) =>
-  events.reduce<Record<'current' | 'future' | 'past', ITransitionEvent[]>>(
+export const categoriseEvents = (events: ITransitionEvent[]) =>
+  events.reduce<ISortedEvents>(
     (acc, event) => {
       if (event.duration) {
         const endTime = add(event.date, event.duration);
@@ -26,3 +26,12 @@ export const sortEvents = (events: ITransitionEvent[]) =>
     },
     { past: [], future: [], current: [] }
   );
+
+export const sortDates = (a: ITransitionEvent, b: ITransitionEvent) =>
+  add(new Date(a.date), { ...a.duration }).getTime() - add(new Date(b.date), { ...b.duration }).getTime();
+
+export const sortCategorisedDates = ({ past, current, future }: ISortedEvents): ISortedEvents => ({
+  future: future.sort(sortDates),
+  current: current.sort(sortDates),
+  past: past.sort(sortDates)
+});
