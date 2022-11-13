@@ -1,9 +1,0 @@
-{
-  "hosting": {
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "source": "."
-  },
-  "previews": {
-    "webframeworks": true
-  }
-}

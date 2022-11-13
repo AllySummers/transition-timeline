@@ -4,10 +4,12 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "nx build",
-    "nx": "nx",
-    "start": "nx serve",
-    "test": "nx test"
+    "build": "nx run-many --target=build --all",
+    "lint": "nx run-many --target=lint --all",
+    "start": "nx run-many --target=serve --all",
+    "test": "nx run-many --target=test --all",
+    "typecheck": "nx run-many --target=typecheck --all",
+    "nx": "nx"
   },
   "workspaces": [
     "apps/*",
