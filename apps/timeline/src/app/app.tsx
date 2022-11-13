@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useInterval } from 'usehooks-ts';
+import { useEffectOnce, useInterval } from 'usehooks-ts';
 import { Group, Section, type SectionProps, Shell, Timer } from '@components';
-import { events } from '@config';
+import { config } from '@config';
 import type { ISortedEvents, ITransitionEvent } from '@typings';
 import { sortEvents, titlecase } from '@utils';
 
@@ -20,8 +20,12 @@ export const App = () => {
   });
 
   useInterval(() => {
-    setSortedEvents(sortEvents(events));
+    setSortedEvents(sortEvents(config.events));
   }, 1000);
+
+  useEffectOnce(() => {
+    document.title = `${config.name}'s Transition Timeline`;
+  });
 
   const filteredEvents = (['past', 'current', 'future'] as const).filter((event) => sortedEvents[event].length);
 
@@ -40,9 +44,3 @@ export const App = () => {
     </Shell>
   );
 };
-/*
-alternate={index % 2 === 0}
-          key={`${eventType}-${index}`}
-          heading={titlecase(eventType)}
-          children={sortedEvents[eventType].map(mapEvents)}
-          */

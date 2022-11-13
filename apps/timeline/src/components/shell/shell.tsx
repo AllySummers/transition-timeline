@@ -1,5 +1,5 @@
 import { AppBar, Toolbar, Typography } from '@mui/material';
-import { Container } from '@mui/system';
+import { Container } from '../container';
 import type { ShellProps } from './shell.types';
 
 export const Shell = ({ children }: ShellProps) => (

@@ -1,7 +1,6 @@
-import { Container } from '@mui/material';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
+import { Grid, Typography } from '@mui/material';
 import { AlternateProvider } from '@hooks';
+import { Container } from '../container';
 import type { GroupProps } from './group.types';
 
 export const Group = ({ children, heading, alternate = false }: GroupProps) => (
