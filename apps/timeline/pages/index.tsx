@@ -1,15 +1,23 @@
+import { Typography } from '@mui/material';
 import { useState } from 'react';
 import { useInterval } from 'usehooks-ts';
 import { Group, Section, type SectionProps, Timer } from '@components';
 import { config } from '@config';
 import type { ISortedEvents, ITransitionEvent } from '@typings';
-import { categoriseEvents, sortCategorisedDates, titlecase } from '@utils';
+import { categoriseEvents, formatDate, sortCategorisedDates, titlecase } from '@utils';
 
-const mapEvents = ({ icon, date, description, duration, name }: ITransitionEvent): SectionProps => ({
+const mapEvents = ({ icon, description, name, date, duration, excludeWeeks }: ITransitionEvent): SectionProps => ({
   title: name,
   icon,
   description,
-  children: <Timer date={date} duration={duration} />
+  children: (
+    <>
+      <Timer date={date} duration={duration} excludeWeeks={excludeWeeks} />
+      <Typography sx={{ textAlign: 'center', color: (theme) => theme.palette.grey[400], padding: '0.5rem 0 0' }}>
+        {formatDate(date, duration)}
+      </Typography>
+    </>
+  )
 });
 
 const Index = () => {

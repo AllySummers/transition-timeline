@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 export interface GroupProps {
-  heading: string;
+  heading: ReactNode;
   alternate?: boolean;
   children?: ReactNode;
 }
