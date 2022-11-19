@@ -17,6 +17,6 @@ jobs:
         with:
           node-version: '18.x'
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --force
       - name: Typecheck with TypeScript
         run: npm run typecheck
