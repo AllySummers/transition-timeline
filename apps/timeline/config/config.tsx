@@ -25,7 +25,7 @@ export const config: IConfig = {
     {
       name: 'Sex Reassignment Surgery',
       icon: 'fa-solid fa-scalpel',
-      date: new Date('August 8, 2023 09:00:00'),
+      date: new Date('August 8, 2023 11:30:00'),
       duration: {
         hours: 6
       }
